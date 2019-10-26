@@ -27,6 +27,8 @@
 
 .idea/*
 
+backend/project-management.iml
+
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
