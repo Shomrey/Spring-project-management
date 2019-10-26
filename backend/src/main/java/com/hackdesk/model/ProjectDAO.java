@@ -20,7 +20,7 @@ public class ProjectDAO {
     Project getProject(String projectName){
         return null;
     }
-    boolean addProject(Project project){
+    public boolean addProject(Project project){
 
         Session session = dbConfiguration.sessionFactory().getConfiguration().buildSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();

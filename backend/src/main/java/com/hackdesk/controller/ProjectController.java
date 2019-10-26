@@ -26,7 +26,7 @@ public class ProjectController {
     @PostMapping("/backend/projects")
     Project addProject (@RequestBody Project project) throws  Exception{
 
-       if( !projectDAO.add(project)   )
+       if( !projectDAO.addProject(project)   )
           return null;
         return project;
 
