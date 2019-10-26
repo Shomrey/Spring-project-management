@@ -20,6 +20,9 @@ public class Project {
     public Date projectDeadline;
     @OneToMany(mappedBy = "project", cascade=CascadeType.ALL)
     private Collection<Task> tasks = new ArrayList<>();
+    public Project(){
+        super();
+    }
     public Project(String projectName, Date projectDeadline){
         this.projectName = projectName;
         this.projectDeadline = projectDeadline;

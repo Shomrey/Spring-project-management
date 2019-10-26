@@ -1,11 +1,15 @@
 package com.hackdesk.model;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
 public class ProjectDAO {
     private static final String SQL_INSERT = "INSERT VALUES ";
@@ -18,20 +22,16 @@ public class ProjectDAO {
     }
 
     public boolean addProject(Project project){
-
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
         session.save(project);
         transaction.commit();
         return true;
     }
-    public Project[] getAllProjects(){
-        StringBuilder prepareQuery = new StringBuilder();
-        prepareQuery.append("SELECT * FROM PROJECT");
+    public List<Project> getAllProjects(){
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        Query query = sessionFactory.getCurrentSession().createQuery(prepareQuery.toString());
-        return (Project[]) query.list();
+        Criteria criteria = session.createCriteria(Project.class);
+        return criteria.list();
     }
 
 }

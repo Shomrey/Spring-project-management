@@ -24,8 +24,8 @@ public class ProjectController {
     SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
 
     @PostMapping("/backend/projects")
-    Project addProject (@RequestBody ProjectJson projectJson) throws  Exception{
-        Project project = new Project(projectJson.getProjectName(), projectJson.getProjectDeadline());
+    Project addProject (@RequestBody Project project) throws  Exception{
+       // Project project = new Project(projectJson.getProjectName(), projectJson.getProjectDeadline());
        if(!projectDAO.addProject(project)   )
           return null;
         return project;
@@ -35,11 +35,6 @@ public class ProjectController {
 
     @GetMapping("/backend/projects")
     List<Project> getAllProjects() throws Exception{
-
-        List<Project> projects = new ArrayList<>();
-      //  projects.add(new Project("testowy1",dateFormat.parse("01/01/1999")));
-        projectDAO.getAllProjects();
-
-        return projects;
+        return projectDAO.getAllProjects();
     }
 }
