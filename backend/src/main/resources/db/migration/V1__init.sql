@@ -16,8 +16,8 @@ CREATE TABLE task
 
 );
 
-CREATE TABLE user(
-    user_id serial PRIMARY KEY,
+CREATE TABLE worker(
+    worker_id serial PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     privileges VARCHAR(25) NOT NULL
@@ -27,7 +27,7 @@ CREATE TABLE task_user(
   user_id INTEGER NOT NULL,
   task_id INTEGER NOT NULL,
   CONSTRAINT task_user_user_id_fk FOREIGN KEY (user_id)
-                      REFERENCES user(user_id) MATCH SIMPLE
+                      REFERENCES worker(worker_id) MATCH SIMPLE
                       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT task_user_task_id_fk FOREIGN KEY (task_id)
                       REFERENCES  task(task_id) MATCH SIMPLE
@@ -60,6 +60,6 @@ CREATE TABLE comment(
     content VARCHAR(250) NOT NULL,
     author_id INTEGER NOT NULL,
     CONSTRAINT comment_author_id_fk FOREIGN KEY (author_id)
-                    REFERENCES user(user_id) MATCH SIMPLE
+                    REFERENCES worker(worker_id) MATCH SIMPLE
                     ON UPDATE NO ACTION ON DELETE NO ACTION
-;
+                    );
