@@ -9,7 +9,7 @@ class Projects extends Component {
     return (
       <div>
         {this.state.projects.map(projectNo => (
-          <Project id={projectNo}></Project>
+          <Project key={projectNo} id={projectNo}></Project>
         ))}
       </div>
     );

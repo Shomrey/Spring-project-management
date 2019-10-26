@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class Task extends Component {
   state = {
@@ -8,7 +9,8 @@ class Task extends Component {
   render() {
     return (
       <div>
-        {this.state.name} - {this.state.description}
+        {this.state.name} - {this.state.description} -{" "}
+        <Link to="/taskDetails">Details</Link>
       </div>
     );
   }
