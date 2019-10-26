@@ -1,0 +1,8 @@
+#Container {
+  border-style: solid;
+  border-color: #33d6ff;
+  border-radius: 10px;
+  height: 80%;
+  width: 100%;
+  margin: 10px;
+}

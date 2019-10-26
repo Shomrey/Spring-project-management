@@ -1,8 +1,11 @@
 package com.hackdesk.controller;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.hackdesk.model.Project;
 
+import com.hackdesk.model.ProjectDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +18,19 @@ import java.util.List;
 @RestController
 public class ProjectController {
 
+    @Autowired
+    ProjectDAO projectDAO;
+
     SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
 
     @PostMapping("/backend/projects")
     Project addProject (@RequestBody Project project) throws  Exception{
 
-        return new Project("testowy2",dateFormat.parse("03/05/1999"));
+       if( !projectDAO.add(project)   )
+          return null;
+        return project;
+
+        //return new Project("testowy2",dateFormat.parse("03/05/1999"));
     }
 
     @GetMapping("/backend/projects")
