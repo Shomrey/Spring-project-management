@@ -16,8 +16,9 @@ public class TaskController {
     @PostMapping("/backend/tasks")
     public Task addTask(@RequestBody Task task){
 
+        taskDao.addTask(task);
 
-
+        return task;
     }
 
 }

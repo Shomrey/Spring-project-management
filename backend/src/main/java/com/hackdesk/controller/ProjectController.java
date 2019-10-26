@@ -26,7 +26,7 @@ public class ProjectController {
     @PostMapping("/backend/projects")
     Project addProject (@RequestBody Project project) throws  Exception{
 
-       if( !projectDAO.add(project)   )
+       if( !projectDAO.addProject(project)   )
           return null;
         return project;
 
@@ -37,7 +37,7 @@ public class ProjectController {
     List<Project> getAllProjects() throws Exception{
 
         List<Project> projects = new ArrayList<>();
-        projects.add(new Project("testowy1",dateFormat.parse("01/01/1999")));
+      //  projects.add(new Project("testowy1",dateFormat.parse("01/01/1999")));
 
         return projects;
     }
