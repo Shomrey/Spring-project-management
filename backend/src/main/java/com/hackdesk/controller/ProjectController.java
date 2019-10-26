@@ -38,6 +38,7 @@ public class ProjectController {
 
         List<Project> projects = new ArrayList<>();
       //  projects.add(new Project("testowy1",dateFormat.parse("01/01/1999")));
+        projectDAO.getAllProjects();
 
         return projects;
     }

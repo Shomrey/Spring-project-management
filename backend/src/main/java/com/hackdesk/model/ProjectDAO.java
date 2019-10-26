@@ -3,6 +3,7 @@ package com.hackdesk.model;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 @Repository
@@ -24,8 +25,13 @@ public class ProjectDAO {
         transaction.commit();
         return true;
     }
-    Project[] getAllProjects(){
-        return null;
+    public Project[] getAllProjects(){
+        StringBuilder prepareQuery = new StringBuilder();
+        prepareQuery.append("SELECT * FROM PROJECT");
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = sessionFactory.getCurrentSession().createQuery(prepareQuery.toString());
+        return (Project[]) query.list();
     }
 
 }
