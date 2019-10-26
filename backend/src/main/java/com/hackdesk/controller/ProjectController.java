@@ -1,7 +1,7 @@
 package com.hackdesk.controller;
 
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
+import com.hackdesk.jsonmapper.ProjectJson;
 import com.hackdesk.model.Project;
 
 import com.hackdesk.model.ProjectDAO;
@@ -24,9 +24,9 @@ public class ProjectController {
     SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
 
     @PostMapping("/backend/projects")
-    Project addProject (@RequestBody Project project) throws  Exception{
-
-       if( !projectDAO.addProject(project)   )
+    Project addProject (@RequestBody ProjectJson projectJson) throws  Exception{
+        Project project = new Project(projectJson.getProjectName(), projectJson.getProjectDeadline());
+       if(!projectDAO.addProject(project)   )
           return null;
         return project;
 
