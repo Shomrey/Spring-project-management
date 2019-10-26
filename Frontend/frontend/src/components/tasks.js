@@ -9,7 +9,7 @@ class Tasks extends Component {
     return (
       <div>
         {this.state.tasks.map(taskNo => (
-          <Task id={taskNo}></Task>
+          <Task key={taskNo} id={taskNo}></Task>
         ))}
       </div>
     );
