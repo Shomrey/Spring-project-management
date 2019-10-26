@@ -37,7 +37,7 @@ public class ProjectController {
     List<Project> getAllProjects() throws Exception{
 
         List<Project> projects = new ArrayList<>();
-        projects.add(new Project("testowy1",dateFormat.parse("01/01/1999")));
+      //  projects.add(new Project("testowy1",dateFormat.parse("01/01/1999")));
 
         return projects;
     }
