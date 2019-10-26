@@ -28,7 +28,7 @@ class ProjectDAOTest {
     void addProject() {
         ProjectDAO pdao = new ProjectDAO();
         try {
-            pdao.addProject("Project1", new SimpleDateFormat("DD/MM/YYYY").parse("20/12/2019"));
+            pdao.addProject(new Project("Project1", new SimpleDateFormat("DD/MM/YYYY").parse("20/12/2019")));
         } catch (ParseException e) {
             e.printStackTrace();
         }

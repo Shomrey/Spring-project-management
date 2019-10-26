@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TaskController {
-
+/*
     @Autowired
-    TaskDAO taskDao;
+    TaskDAO taskDao;*/
 
-    @PostMapping("/backend/tasks")
+/*    @PostMapping("/backend/tasks")
     public Task addTask(@RequestBody Task task){
 
         taskDao.addTask(task);
 
-        return task;
-    }
+
+
+    }*/
 
 }

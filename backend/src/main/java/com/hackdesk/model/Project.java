@@ -1,5 +1,8 @@
 package com.hackdesk.model;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,16 +13,13 @@ public class Project {
     @Id
     @GeneratedValue
     @Column(name = "project_id")
-    Integer projectID;
-
+    public Integer projectID;
     @Column(name = "project_name")
-    String projectName;
-
-    
+    public String projectName;
     @Column(name = "project_deadline_date")
-    Date projectDeadline;
-
-    @OneToMany(mappedBy ="",cascade=CascadeType.ALL)
+    @JsonFormat(pattern="dd/MM/yyyy")
+    public Date projectDeadline;
+    @OneToMany(mappedBy = "project", cascade=CascadeType.ALL)
     private Collection<Task> tasks = new ArrayList<>();
     public Project(String projectName, Date projectDeadline){
         this.projectName = projectName;

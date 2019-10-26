@@ -1,22 +1,22 @@
 package com.hackdesk.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "task")
 public class Task {
     @Id @GeneratedValue
+    @Column(name = "task_id")
     Integer taskID;
+    @Column(name = "task_name")
     String taskName;
-    Integer projectID;
+    @Column(name = "task_description")
     String description;
     @ManyToOne
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "project_id", nullable = false)
     Project project;
-    public Task(String taskName, Integer projectID, String description){
+    public Task(String taskName, String description){
         this.taskName = taskName;
-        this.projectID =  projectID;
         this.description = description;
     }
 }
