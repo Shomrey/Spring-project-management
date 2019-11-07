@@ -34,4 +34,11 @@ public class ProjectDAO {
         return criteria.list();
     }
 
+    public Project getProjectByID(Integer id){
+        Session session = sessionFactory.getCurrentSession();
+        Project project = session.get(Project.class, id);
+        return project;
+    }
+
+
 }

@@ -6,10 +6,7 @@ import com.hackdesk.model.Project;
 
 import com.hackdesk.model.ProjectDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,9 +29,12 @@ public class ProjectController {
 
         //return new Project("testowy2",dateFormat.parse("03/05/1999"));
     }
-
     @GetMapping("/backend/projects")
     List<Project> getAllProjects() throws Exception{
         return projectDAO.getAllProjects();
+    }
+    @GetMapping("/backend/projects/criteria")
+    Project getProjectByID(@RequestParam(name = "id")Integer id) throws Exception{
+        return projectDAO.getProjectByID(id);
     }
 }
